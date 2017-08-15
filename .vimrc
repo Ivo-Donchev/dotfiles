@@ -1,8 +1,12 @@
 " My custom material theme + settings
-colorscheme material_patched
+" colorscheme material_patched
+colorscheme materialbox
+" colorscheme matrix
+
+" colorscheme material-theme
 
 set number
-syntax enable
+syntax on
 set background=dark
 
 
@@ -16,7 +20,7 @@ set background=dark
 filetype indent plugin on
 
 " Enable syntax highlighting
-syntax on
+syntax enable
 
 set hidden
 
@@ -25,6 +29,9 @@ set wildmenu
 
 "enable 256-color mode
 set t_Co=256
+
+" For python/ruby development
+set iskeyword-=_
 
 " Show partial commands in the last line of the screen
 set showcmd
@@ -154,14 +161,17 @@ nnoremap <space> za
 " ctrl-p settings
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|node_modules|bower_components|__pycache__)$',
+  \ 'dir':  '\v[\/](\.git|node_modules|bower_components|build|dist|__pycache__)$',
   \ 'file': '\v\.(celerybeat-schedule|jpeg|png)$'
   \ }
+
 
 " Region expand settings
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+" Clipboard copy settings
+vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 
 " Python settings
 " Debugger snippet
@@ -170,6 +180,17 @@ function! IPDB()
 endfunction
 
 nmap <C-B> :call IPDB()<CR>
+
+let g:syntastic_python_checkers = ['flake8']
+
+
+" React/JSX settings
+" ESLINT settings
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+
+" Ruby settings
+let g:syntastic_ruby_checkers = ['rubocop']
 
 
 execute pathogen#infect()
@@ -182,6 +203,12 @@ call vundle#begin()
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" CtrlP Funky settings
+nnoremap <C-f> :CtrlPFunky<Cr>
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1
+
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -204,3 +231,8 @@ Plugin 'nvie/vim-flake8'
 Plugin 'szw/vim-tags'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mxw/vim-jsx'
+Plugin 'mattn/emmet-vim'
+Plugin 'godlygeek/csapprox'
+Plugin 'tacahiroy/ctrlp-funky'
