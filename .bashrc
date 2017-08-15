@@ -12,8 +12,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=100000
+HISTFILESIZE=200000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -119,6 +119,9 @@ fi
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+
+TERM="xterm-256color"
+
 # Custom aliases
 
 ## Git related
@@ -133,3 +136,5 @@ alias pmr='python manage.py runserver'
 alias pmt='python manage.py test'
 alias pmm='python manage.py migrate'
 alias pmmm='python manage.py makemigrations'
+alias pms='python manage.py shell'
+alias pmsp='python manage.py shell_plus'
