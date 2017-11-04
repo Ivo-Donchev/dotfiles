@@ -1,9 +1,5 @@
 " My custom material theme + settings
-" colorscheme material_patched
 colorscheme materialbox
-" colorscheme matrix
-
-" colorscheme material-theme
 
 set number
 syntax on
@@ -32,6 +28,7 @@ set t_Co=256
 
 " For python/ruby development
 set iskeyword-=_
+
 
 " Show partial commands in the last line of the screen
 set showcmd
@@ -176,7 +173,7 @@ vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call
 " Python settings
 " Debugger snippet
 function! IPDB()
-    r~/.vim/snippets/python/ipdb.txt
+  r~/.vim/snippets/python/ipdb.txt
 endfunction
 
 nmap <C-B> :call IPDB()<CR>
@@ -187,7 +184,7 @@ let g:syntastic_python_checkers = ['flake8']
 " React/JSX settings
 " ESLINT settings
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_javascript_eslint_exec = 'eslint'
 
 " Ruby settings
 let g:syntastic_ruby_checkers = ['rubocop']
@@ -204,11 +201,28 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
+" Prettier
+let g:prettier#autoformat = 0
+let g:prettier#config#trailing_comma = 'none'
+let g:prettier#exec_cmd_async = 1
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#print_width = 80
+let g:prettier#config#tab_width = 2
+let g:prettier#config#trailing_comma = 'none'
+let g:prettier#config#bracket_spacing = 'false' 
+let g:prettier#config#jsx_bracket_same_line = 'true' 
+
 " CtrlP Funky settings
 nnoremap <C-f> :CtrlPFunky<Cr>
 let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
 
+" Copy to clipboard options
+set clipboard=unnamed
+let g:system_copy#copy_command='xclip -sel clipboard'
+
+" Highlight current line
+let g:conoline_use_colorscheme_default_normal=1
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -225,7 +239,6 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'bps/vim-textobj-python'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'szw/vim-tags'
@@ -236,3 +249,9 @@ Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'prettier/vim-prettier' 
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'christoomey/vim-system-copy'
+Plugin 'miyakogi/conoline.vim'
+Plugin 'inside/vim-search-pulse'
+Plugin 'ternjs/tern_for_vim'
