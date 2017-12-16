@@ -1,9 +1,22 @@
 " My custom material theme + settings
-colorscheme materialbox
+color dracula  " Default theme
 
 set number
 syntax on
 set background=dark
+
+" Default theme
+autocmd BufEnter * color dracula
+autocmd BufEnter * set background=dark
+
+" Superman theme for css/scss
+autocmd BufEnter *.css color superman
+autocmd BufEnter *.scss color superman
+
+" Gruvbox theme for react/js
+autocmd BufEnter *.js color gruvbox
+autocmd BufEnter *.jsx color gruvbox
+
 
 
 " Light alternative (when needed)
@@ -254,4 +267,5 @@ Plugin 'sudar/vim-arduino-syntax'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'miyakogi/conoline.vim'
 Plugin 'inside/vim-search-pulse'
-Plugin 'ternjs/tern_for_vim'
+Plugin 'dracula/vim'
+Plugin 'chemzqm/vim-jsx-improve'
