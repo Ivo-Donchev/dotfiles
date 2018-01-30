@@ -237,6 +237,24 @@ let g:system_copy#copy_command='xclip -sel clipboard'
 " Highlight current line
 let g:conoline_use_colorscheme_default_normal=1
 
+" For vim-devicons
+set encoding=utf8
+
+" vim-javascript
+let g:javascript_conceal_function             = "λ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "💩"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_noarg_arrow_function = "🞅"
+let g:javascript_conceal_underscore_arrow_function = "🞅"
+
+set conceallevel=1
+
+
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
@@ -262,10 +280,14 @@ Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'prettier/vim-prettier' 
+Plugin 'prettier/vim-prettier'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'miyakogi/conoline.vim'
 Plugin 'inside/vim-search-pulse'
 Plugin 'dracula/vim'
 Plugin 'chemzqm/vim-jsx-improve'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'raimondi/delimitmate'
+
