@@ -1,23 +1,14 @@
 " My custom material theme + settings
-color dracula  " Default theme
+color dracula
 
 set number
 syntax on
 set background=dark
 
-" Default theme
-autocmd BufEnter * color dracula
-autocmd BufEnter * set background=dark
-
-" Superman theme for css/scss
-autocmd BufEnter *.css color superman
-autocmd BufEnter *.scss color superman
-
-" Gruvbox theme for react/js
-autocmd BufEnter *.js color gruvbox
-autocmd BufEnter *.jsx color gruvbox
-
-
+ color dracula
+ set background=dark
+ " Python theme - dracula
+ " JS them - gruvbox
 
 " Light alternative (when needed)
 " colorscheme mayansmoke
@@ -254,6 +245,27 @@ let g:javascript_conceal_underscore_arrow_function = "🞅"
 
 set conceallevel=1
 
+" Multiple cursors
+let g:multi_cursor_exit_from_visual_mode=0
+let g:multi_cursor_exit_from_insert_mode=0
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-d>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_start_key='<c-D>'
+
+" Ctrlsf
+fun! s:get_visual_selection()
+     let l=getline("'<")
+     let [line1,col1] = getpos("'<")[1:2]
+     let [line2,col2] = getpos("'>")[1:2]
+     return l[col1 - 1: col2 - 1]
+endfun
+nnoremap <C-F> :CtrlSF 
+vnoremap <C-F> <Esc>:CtrlSF <C-R><C-R>=<SID>get_visual_selection()<CR>
+
+" relative numbers
+set relativenumber
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -290,4 +302,6 @@ Plugin 'chemzqm/vim-jsx-improve'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'raimondi/delimitmate'
-
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'PeterRincker/vim-argumentative'
