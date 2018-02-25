@@ -1,12 +1,11 @@
 " My custom material theme + settings
-color dracula
+" color dracula
+color gruvbox
 
 set number
 syntax on
 set background=dark
 
- color dracula
- set background=dark
  " Python theme - dracula
  " JS them - gruvbox
 
@@ -32,7 +31,6 @@ set t_Co=256
 
 " For python/ruby development
 set iskeyword-=_
-
 
 " Show partial commands in the last line of the screen
 set showcmd
@@ -188,7 +186,7 @@ let g:syntastic_python_checkers = ['flake8']
 " React/JSX settings
 " ESLINT settings
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint'
+let g:syntastic_javascript_eslint_exec = '../node_modules/eslint/bin/eslint.js'
 
 " Ruby settings
 let g:syntastic_ruby_checkers = ['rubocop']
@@ -204,6 +202,9 @@ call vundle#begin()
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='dark'
+map ,bn :bnext
+map ,bp :bprevious
 
 " Prettier
 let g:prettier#autoformat = 0
@@ -215,6 +216,8 @@ let g:prettier#config#tab_width = 2
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'false' 
 let g:prettier#config#jsx_bracket_same_line = 'true' 
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+
 
 " CtrlP Funky settings
 nnoremap <C-f> :CtrlPFunky<Cr>
@@ -243,7 +246,7 @@ let g:javascript_conceal_arrow_function       = "⇒"
 let g:javascript_conceal_noarg_arrow_function = "🞅"
 let g:javascript_conceal_underscore_arrow_function = "🞅"
 
-set conceallevel=1
+set conceallevel=0
 
 " Multiple cursors
 let g:multi_cursor_exit_from_visual_mode=0
@@ -266,6 +269,35 @@ vnoremap <C-F> <Esc>:CtrlSF <C-R><C-R>=<SID>get_visual_selection()<CR>
 
 " relative numbers
 set relativenumber
+
+" Python syntax
+let python_highlight_all = 1
+
+" React snippets
+let g:UltiSnipsExpandTrigger="<C-l>"
+let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpBackwardTrigger="<C-h>"
+
+" Switch
+let g:switch_mapping = "-"
+
+" Closetag
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
+" React
+map ,css :e <C-R>=expand("%:p:h") . "/styles.css" <CR>
+map ,js :e <C-R>=expand("%:p:h") . "/index.js" <CR>
+
+" JS goto definition
+function! JSGOTODEF()
+  normal gdvey$3hgfggnzz
+endfunction
+
+autocmd FileType javascript nmap <leader>d :call JSGOTODEF()<CR>
+
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -296,12 +328,17 @@ Plugin 'prettier/vim-prettier'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'miyakogi/conoline.vim'
-Plugin 'inside/vim-search-pulse'
 Plugin 'dracula/vim'
 Plugin 'chemzqm/vim-jsx-improve'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'raimondi/delimitmate'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'PeterRincker/vim-argumentative'
+Plugin 'hdima/python-syntax'
+Plugin 'epilande/vim-es2015-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'epilande/vim-react-snippets'
+Plugin 'alvan/vim-closetag'
+Plugin 'hotoo/jsgf.vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'ap/vim-css-color'
