@@ -1,0 +1,208 @@
+# Pure js
+snippet pr "console log" b
+console.log("${1:something...}")
+endsnippet
+
+snippet test "JS Tests" b
+import {${1: Component}} from './index.js';
+
+describe('${2:$1} tests', () => {
+${3}
+})
+endsnippet
+
+snippet testit "JS Tests it" b
+it('$1', () => {
+	$2
+})
+endsnippet
+
+snippet af "Arrow function" b
+($1) => {${2:console.log($1)}}
+endsnippet
+
+snippet caf "Constant Arrow function" b
+const $1 = ($2) => {${3:console.log($2)}}
+endsnippet
+
+snippet rm "Method Arrow function" b
+$1 = ($2) => {${3:console.log($2)}}
+endsnippet
+
+# imports
+snippet icom "Import Component" b
+import ${1:Component} from 'components/$1';
+endsnippet
+
+snippet icon "Import Container" b
+import ${1:Container} from 'containers/$1';
+endsnippet
+
+snippet ias "Import asset" b
+import ${1:Asset} from './assets/${2:$1}.svg';
+endsnippet
+
+snippet iut "Import util" b
+import {${1:Util}} from 'utils/${2:$1}';
+endsnippet
+
+
+snippet icss "Import css" b
+import './${1:styles}.css';
+endsnippet
+
+# React & JSX
+snippet rrcc "React Redux Class Component" b
+import React from 'react';
+import { connect } from 'react-redux';
+import styles from './${2:$1}.css';
+
+class ${1:`!v expand('%:t:r')`} extends Component {
+	static propTypes = {
+		children: PropTypes.node,
+		className: PropTypes.string,
+		dispatch: PropTypes.func.isRequired,
+	};
+
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<div className={styles.base}>
+				$3
+			</div>
+		);
+	}
+}
+
+function mapStateToProps(state) {
+	return {};
+}
+
+export default connect(mapStateToProps)($1);
+endsnippet
+
+snippet rcc "React Class Component" b
+import React from 'react';
+import styles from './styles.css';
+
+class ${1:`!v expand('%:t:r')`} extends React.Component {
+	state = {
+	  $2
+	}
+
+	render() {
+		return (
+			<${3:div}$4>
+				${5: <span>$1 component's content </span> }
+			</$3>
+		);
+	}
+}
+
+export default $1;
+endsnippet
+
+snippet rfc "React Functional Component" b
+import React from 'react';
+import styles from './styles.css';
+
+const  ${1:`!v expand('%:t:r')`} = ({${2:...props}}) => {
+  ${3}
+	return (
+		<${4:div}$5>
+			${6: <span>$1 component's content!</span>}
+		</$4>
+	);
+}
+
+export default $1;
+endsnippet
+
+
+snippet pp "Get Props"
+${props => props.${1}};
+endsnippet
+
+snippet cn "className"
+className="$1"
+endsnippet
+
+snippet set "Set State"
+this.setState({
+	${1}: ${2}
+});
+endsnippet
+
+snippet setf "Set State as function"
+this.setState((prevState) => {
+	${1}
+	return prevState;
+});
+endsnippet
+
+snippet props "Get Property" i
+this.props.${1}
+endsnippet
+
+snippet state "Get State" i
+this.state.${1}
+endsnippet
+
+snippet ref "Ref" i
+ref={${1:ref} => { this.${2:name} = $1; }}
+endsnippet
+
+
+# Component Lifecycle
+snippet cwm "Component Will Mount" b
+componentWillMount() {
+	$1
+}
+endsnippet
+
+snippet cdm "Component Did Mount" b
+componentDidMount() {
+	$1
+}
+endsnippet
+
+snippet cwrp "Component Will Receive Props" b
+componentWillReceiveProps(nextProps) {
+	$1
+}
+endsnippet
+
+snippet scup "Should Component Update" b
+shouldComponentUpdate(nextProps, nextState) {
+	$1
+}
+endsnippet
+
+snippet cwup "Component Will Update" b
+componentWillUpdate(nextProps, nextState) {
+	$1
+}
+endsnippet
+
+snippet cdup "Component Did Update" b
+componentDidUpdate(prevProps, prevState) {
+	$1
+}
+endsnippet
+
+snippet cwu "Component Will Unmount" b
+componentWillUnmount() {
+	$1
+}
+endsnippet
+
+snippet ren "Render"
+render() {
+	return ${1:(
+		${2:<div>${3}</div>}
+	);}
+}
+endsnippet
