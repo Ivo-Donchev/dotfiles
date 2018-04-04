@@ -9,10 +9,6 @@ set background=dark
  " Python theme - dracula
  " JS them - gruvbox
 
-" Light alternative (when needed)
-" colorscheme mayansmoke
-
-
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
@@ -202,7 +198,15 @@ call vundle#begin()
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme='dark'
+let g:airline_theme='deus'
+let g:airline_section_b = ''
+let g:airline_section_y = ''
+let g:airline_section_y = ''
+let g:airline_section_z = ''
+let g:airline_section_error = ''
+let g:airline_section_warning = ''
+let g:airline#extensions#tabline#enabled = 0
+
 map ,bn :bnext
 map ,bp :bprevious
 
@@ -216,7 +220,7 @@ let g:prettier#config#tab_width = 2
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'false' 
 let g:prettier#config#jsx_bracket_same_line = 'true' 
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 
 " CtrlP Funky settings
@@ -267,8 +271,19 @@ endfun
 nnoremap <C-F> :CtrlSF 
 vnoremap <C-F> <Esc>:CtrlSF <C-R><C-R>=<SID>get_visual_selection()<CR>
 
-" relative numbers
-set relativenumber
+set nolinebreak
+
+" navigate when have line breaks
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
 
 " Python syntax
 let python_highlight_all = 1
@@ -278,14 +293,6 @@ let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<C-l>"
 let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
-" Switch
-let g:switch_mapping = "-"
-
-" Closetag
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx'
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
-let g:closetag_shortcut = '>'
-let g:closetag_close_shortcut = '<leader>>'
 
 " React
 map ,css :e <C-R>=expand("%:p:h") . "/styles.css" <CR>
@@ -298,6 +305,11 @@ endfunction
 
 autocmd FileType javascript nmap <leader>d :call JSGOTODEF()<CR>
 
+" Move line up and down mappings
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -325,20 +337,15 @@ Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'prettier/vim-prettier'
-Plugin 'sudar/vim-arduino-syntax'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'miyakogi/conoline.vim'
 Plugin 'dracula/vim'
 Plugin 'chemzqm/vim-jsx-improve'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'raimondi/delimitmate'
 Plugin 'dyng/ctrlsf.vim'
-Plugin 'PeterRincker/vim-argumentative'
 Plugin 'hdima/python-syntax'
 Plugin 'epilande/vim-es2015-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'epilande/vim-react-snippets'
-Plugin 'alvan/vim-closetag'
 Plugin 'hotoo/jsgf.vim'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'ap/vim-css-color'
