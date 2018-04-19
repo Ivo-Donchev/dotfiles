@@ -142,6 +142,8 @@ autocmd FileType c,cpp,python,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Flagging Unnecessary Whitespace
 highlight BadWhitespace ctermbg=red guibg=darkred
+highlight Normal ctermbg=black
+
 
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
