@@ -83,9 +83,6 @@ set number
 set notimeout ttimeout ttimeoutlen=200
 
 "------------------------------------------------------------
-" Indentation options {Y*{{
-"
-" Indentation settings according to personal preference.
 
 " Indentation settings for using 2 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
@@ -168,7 +165,9 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " Clipboard copy settings
-vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+set clipboard=unnamed
+let g:system_copy#copy_command='xclip -sel clipboard'
+
 
 " Python settings
 " Debugger snippet
@@ -189,7 +188,6 @@ let g:syntastic_javascript_eslint_exec = '../node_modules/eslint/bin/eslint.js'
 " Ruby settings
 let g:syntastic_ruby_checkers = ['rubocop']
 
-
 execute pathogen#infect()
 
 " Vundle "
@@ -208,10 +206,7 @@ let g:airline_section_z = ''
 let g:airline_section_error = ''
 let g:airline_section_warning = ''
 let g:airline#extensions#tabline#enabled = 0
-
-map ,bn :bnext
-map ,bp :bprevious
-
+"
 " Prettier
 let g:prettier#autoformat = 0
 let g:prettier#config#trailing_comma = 'none'
@@ -222,46 +217,15 @@ let g:prettier#config#tab_width = 2
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'false' 
 let g:prettier#config#jsx_bracket_same_line = 'true' 
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
-
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 " CtrlP Funky settings
 nnoremap <C-f> :CtrlPFunky<Cr>
 let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
-
-" Copy to clipboard options
-set clipboard=unnamed
-let g:system_copy#copy_command='xclip -sel clipboard'
-
-" Highlight current line
-let g:conoline_use_colorscheme_default_normal=1
-
+"
 " For vim-devicons
 set encoding=utf8
-
-" vim-javascript
-let g:javascript_conceal_function             = "λ"
-let g:javascript_conceal_null                 = "ø"
-let g:javascript_conceal_this                 = "@"
-let g:javascript_conceal_return               = "⇚"
-let g:javascript_conceal_undefined            = "💩"
-let g:javascript_conceal_NaN                  = "ℕ"
-let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒"
-let g:javascript_conceal_noarg_arrow_function = "🞅"
-let g:javascript_conceal_underscore_arrow_function = "🞅"
-
-set conceallevel=0
-
-" Multiple cursors
-let g:multi_cursor_exit_from_visual_mode=0
-let g:multi_cursor_exit_from_insert_mode=0
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-d>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-let g:multi_cursor_start_key='<c-D>'
 
 " Ctrlsf
 fun! s:get_visual_selection()
@@ -295,18 +259,6 @@ let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<C-l>"
 let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
-
-" React
-map ,css :e <C-R>=expand("%:p:h") . "/styles.css" <CR>
-map ,js :e <C-R>=expand("%:p:h") . "/index.js" <CR>
-
-" JS goto definition
-function! JSGOTODEF()
-  normal gdvey$3hgfggnzz
-endfunction
-
-autocmd FileType javascript nmap <leader>d :call JSGOTODEF()<CR>
-
 " Move line up and down mappings
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
@@ -330,7 +282,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'nvie/vim-flake8'
-Plugin 'szw/vim-tags'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
@@ -341,7 +292,6 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'prettier/vim-prettier'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'miyakogi/conoline.vim'
-Plugin 'dracula/vim'
 Plugin 'chemzqm/vim-jsx-improve'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'dyng/ctrlsf.vim'
@@ -351,3 +301,4 @@ Plugin 'SirVer/ultisnips'
 Plugin 'epilande/vim-react-snippets'
 Plugin 'hotoo/jsgf.vim'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'amoffat/snake'
