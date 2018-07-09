@@ -179,11 +179,15 @@ nmap <C-B> :call IPDB()<CR>
 
 let g:syntastic_python_checkers = ['flake8']
 
+" Navigation in current dir shortcut
+map ,hh :e <C-R>=expand("%:p:h") . "/" <CR>
+
+
 
 " React/JSX settings
 " ESLINT settings
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = '../node_modules/eslint/bin/eslint.js'
+let g:syntastic_javascript_eslint_exec = './node_modules/eslint/bin/eslint.js'
 
 " Ruby settings
 let g:syntastic_ruby_checkers = ['rubocop']
@@ -228,6 +232,7 @@ let g:ctrlp_funky_syntax_highlight = 1
 set encoding=utf8
 
 " Ctrlsf
+let g:ctrlsf_ackprg = 'ag'
 fun! s:get_visual_selection()
      let l=getline("'<")
      let [line1,col1] = getpos("'<")[1:2]
