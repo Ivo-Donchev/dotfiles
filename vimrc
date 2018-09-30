@@ -187,7 +187,7 @@ map ,hh :e <C-R>=expand("%:p:h") . "/" <CR>
 " React/JSX settings
 " ESLINT settings
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = './node_modules/eslint/bin/eslint.js'
+let g:syntastic_javascript_eslint_exec = 'node_modules/eslint/bin/eslint.js'
 
 " Ruby settings
 let g:syntastic_ruby_checkers = ['rubocop']
@@ -218,7 +218,6 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
-let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'false' 
 let g:prettier#config#jsx_bracket_same_line = 'true' 
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
@@ -270,6 +269,12 @@ nnoremap <C-k> :m .-2<CR>==
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+noremap <leader>D :ReactGotoDef
+
+" Easymotion
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
@@ -304,6 +309,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'epilande/vim-es2015-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'epilande/vim-react-snippets'
-Plugin 'hotoo/jsgf.vim'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'amoffat/snake'
+Plugin 'Ivo-Donchev/goto-definition-plugin-for-react'
+Plugin 'junegunn/goyo.vim'
+Plugin 'easymotion/vim-easymotion'
