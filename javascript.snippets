@@ -3,35 +3,29 @@ snippet pr "console log" b
 console.log("${1:something...}")
 endsnippet
 
-snippet test "JS Tests" b
-import {${1: Component}} from './index.js';
-
-describe('${2:$1} tests', () => {
-${3}
-})
-endsnippet
-
-snippet testit "JS Tests it" b
-it('$1', () => {
-	$2
-})
-endsnippet
-
 snippet af "Arrow function" b
-($1) => {${2:console.log($1)}}
+($1) => ${2:console.log($1)}
 endsnippet
 
 snippet caf "Constant Arrow function" b
 const $1 = ($2) => {${3:console.log($2)}}
 endsnippet
 
-snippet rm "Method Arrow function" b
-$1 = ($2) => {${3:console.log($2)}}
+# imports
+snippet idcom "Import Default Component" b
+import ${1:Component} from 'components/$1';
 endsnippet
 
-# imports
 snippet icom "Import Component" b
-import ${1:Component} from 'components/$1';
+import {${1:Component}} from 'components';
+endsnippet
+
+snippet idlcom "Import Default Local Component" b
+import ${1:Component} from './components/$1';
+endsnippet
+
+snippet ilcom "Import Local Component" b
+import {${1:Component}} from './components';
 endsnippet
 
 snippet icon "Import Container" b
@@ -51,37 +45,26 @@ snippet icss "Import css" b
 import './${1:styles}.css';
 endsnippet
 
+# HTML
+snippet div "div" b
+<div>$2</div>
+endsnippet
+
+snippet divcn "div with class" b
+<div className="$1">$2</div>
+endsnippet
+
 # React & JSX
-snippet rrcc "React Redux Class Component" b
+snippet react "React" b
 import React from 'react';
-import { connect } from 'react-redux';
-import styles from './${2:$1}.css';
+endsnippet
 
-class ${1:`!v expand('%:t:r')`} extends Component {
-	static propTypes = {
-		children: PropTypes.node,
-		className: PropTypes.string,
-		dispatch: PropTypes.func.isRequired,
-	};
+snippet lodash "Lodash" b
+import _ from 'lodash';
+endsnippet
 
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<div className={styles.base}>
-				$3
-			</div>
-		);
-	}
-}
-
-function mapStateToProps(state) {
-	return {};
-}
-
-export default connect(mapStateToProps)($1);
+snippet moment "moment" b
+import moment from 'moment';
 endsnippet
 
 snippet rcc "React Class Component" b

@@ -25,8 +25,6 @@ set wildmenu
 "enable 256-color mode
 set t_Co=256
 
-" For python/ruby development
-set iskeyword-=_
 
 " Show partial commands in the last line of the screen
 set showcmd
@@ -83,13 +81,14 @@ set number
 set notimeout ttimeout ttimeoutlen=200
 
 "------------------------------------------------------------
-
-" Indentation settings for using 2 spaces instead of tabs.
-" Do not change 'tabstop' from its default value of 8 with this setup.
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
+" Python settings for tabs (works with 'vim-scripts/indentpython.vim')
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=79
 set expandtab
+set autoindent
+set fileformat=unix
 
 "------------------------------------------------------------
 " Mappings
@@ -258,6 +257,13 @@ inoremap <Up> <C-o>gk
 " Python syntax
 let python_highlight_all = 1
 
+" Set tsx files filetype to javascript to use syntax highlighting
+augroup twig_ft
+  au!
+  autocmd BufNewFile,BufRead *.tsx   set syntax=javascript
+  autocmd BufNewFile,BufRead *.tsx   set filetype=javascript
+augroup END
+
 " React snippets
 let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<C-l>"
@@ -269,11 +275,25 @@ nnoremap <C-k> :m .-2<CR>==
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-noremap <leader>D :ReactGotoDef
+noremap <leader>D :call ReactGotoDef()<CR>
 
 " Easymotion
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" UndoTree
+nnoremap <F5> :UndotreeToggle<cr>
+
+" Toggle current line hightlight
+nnoremap <Leader>c :set cursorline!<CR>
+
+" Gvim settings
+" 1. Hide menubar
+set guioptions-=m
+
+" Scrolling with shift and arrows
+map <S-Down> <C-E>
+map <S-Up> <C-Y>
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -310,6 +330,23 @@ Plugin 'epilande/vim-es2015-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'epilande/vim-react-snippets'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'Ivo-Donchev/goto-definition-plugin-for-react'
+Plugin 'Ivo-Donchev/vim-react-goto-definition'
 Plugin 'junegunn/goyo.vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'mbbill/undotree'
+Plugin 'bkad/CamelCaseMotion'
+Plugin 'vim-scripts/indentpython.vim'  " Proper python indentation (new line in dict, for example)
+Plugin 'tpope/vim-abolish'
+
+" ------------------------------
+" CamelCaseMotion settings:
+" CamelCaseMotion settings care about the snake_case. The alternative is `set iskeyword-=_` but it breaks the colorscheme :(
+call camelcasemotion#CreateMotionMappings('<leader>')
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+" ------------------------------
