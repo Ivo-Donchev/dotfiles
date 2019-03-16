@@ -1,0 +1,83 @@
+# Django
+snippet dall "SomeModel.objects.all()" b
+${1:Model}.objects.all()
+endsnippet
+
+snippet dget "SomeModel.objects.get()" b
+${1:Model}.objects.get(${2})
+endsnippet
+
+snippet dffirst "SomeModel.objects.filter(...).first()" b
+${1:Model}.objects.filter(${2}).first()
+endsnippet
+
+snippet service
+@transaction.atomic
+def ${1:fname}(*, $2):
+	$0
+endsnippet
+
+# Python
+
+snippet for "for loop" b
+for ${1:item} in ${2:iterable}:
+	${3:${VISUAL:pass}}
+endsnippet
+
+snippet if "If" b
+if ${1:condition}:
+	${2:${VISUAL:pass}}
+endsnippet
+
+snippet ife "If / Else" b
+if ${1:condition}:
+	${2:${VISUAL:pass}}
+else:
+	${3:pass}
+endsnippet
+
+snippet ifee "If / Elif / Else" b
+if ${1:condition}:
+	${2:${VISUAL:pass}}
+elif ${3:condition}:
+	${4:pass}
+else:
+	${5:pass}
+endsnippet
+
+snippet roprop "Read Only Property" b
+@property
+def ${1:name}(self):
+	${2:return self._$1}$0
+endsnippet
+
+snippet def
+def ${1:fname}(`!p snip.rv = vim.eval('indent(".") ? "self" : ""')`$2):
+	$0
+endsnippet
+
+# Assertions
+
+snippet asr "Assert raises" b
+self.assertRaises(${1:exception}, ${2:${VISUAL:func}}${3/.+/, /}${3:arguments})
+endsnippet
+
+snippet asn "Assert is None" b
+self.assertIsNone(${1:${VISUAL:expression}})
+endsnippet
+
+snippet asnn "Assert is not None" b
+self.assertIsNotNone(${1:${VISUAL:expression}})
+endsnippet
+
+snippet ase "Assert equal" b
+self.assertEqual(${1:${VISUAL:first}}, ${2:second})
+endsnippet
+
+snippet ast "Assert True" b
+self.assertTrue(${1:${VISUAL:expression}})
+endsnippet
+
+snippet asf "Assert False" b
+self.assertFalse(${1:${VISUAL:expression}})
+endsnippet
