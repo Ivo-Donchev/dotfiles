@@ -268,6 +268,8 @@ augroup END
 let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<C-l>"
 let g:UltiSnipsJumpBackwardTrigger="<C-h>"
+set runtimepath+=~/.vim/snippets/  " discover snippets in ~/.vim/snippets/UltiSnips
+
 
 " Move line up and down mappings
 nnoremap <C-j> :m .+1<CR>==
@@ -294,6 +296,9 @@ set guioptions-=m
 " Scrolling with shift and arrows
 map <S-Down> <C-E>
 map <S-Up> <C-Y>
+
+" Do NOT break the line on 80th symbol caused by vim-scripts/indentpython.vim
+set tw=0
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -338,9 +343,12 @@ Plugin 'bkad/CamelCaseMotion'
 Plugin 'vim-scripts/indentpython.vim'  " Proper python indentation (new line in dict, for example)
 Plugin 'tpope/vim-abolish'
 
+
 " ------------------------------
 " CamelCaseMotion settings:
 " CamelCaseMotion settings care about the snake_case. The alternative is `set iskeyword-=_` but it breaks the colorscheme :(
+" set it explicitly
+set iskeyword+=_
 call camelcasemotion#CreateMotionMappings('<leader>')
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
