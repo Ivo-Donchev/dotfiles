@@ -169,12 +169,6 @@ let g:system_copy#copy_command='xclip -sel clipboard'
 
 
 " Python settings
-" Debugger snippet
-function! IPDB()
-  r~/.vim/snippets/python/ipdb.txt
-endfunction
-
-nmap <C-B> :call IPDB()<CR>
 
 let g:syntastic_python_checkers = ['flake8']
 
@@ -219,7 +213,8 @@ let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
 let g:prettier#config#bracket_spacing = 'false' 
 let g:prettier#config#jsx_bracket_same_line = 'true' 
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+" Disable prettier on save temporary
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 " CtrlP Funky settings
 nnoremap <C-f> :CtrlPFunky<Cr>
@@ -231,6 +226,9 @@ set encoding=utf8
 
 " Ctrlsf
 let g:ctrlsf_ackprg = 'ag'
+let g:ctrlsf_search_mode = 'sync'
+
+
 fun! s:get_visual_selection()
      let l=getline("'<")
      let [line1,col1] = getpos("'<")[1:2]
@@ -342,7 +340,19 @@ Plugin 'mbbill/undotree'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'vim-scripts/indentpython.vim'  " Proper python indentation (new line in dict, for example)
 Plugin 'tpope/vim-abolish'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'AndrewRadev/sideways.vim'
 
+" ------------------------------
+" Splitjoin configuration
+let g:splitjoin_python_brackets_on_separate_lines = 1  " converts dict, func arguments.. to multiline with the right identation
+
+" Sideways configuration
+nnoremap <c-Left> :SidewaysJumpLeft<cr>
+nnoremap <c-Right> :SidewaysJumpRight<cr>
+
+nnoremap <c-S-Left> :SidewaysLeft<cr>
+nnoremap <c-S-Right> :SidewaysRight<cr>
 
 " ------------------------------
 " CamelCaseMotion settings:
