@@ -354,6 +354,10 @@ nnoremap <c-Right> :SidewaysJumpRight<cr>
 nnoremap <c-S-Left> :SidewaysLeft<cr>
 nnoremap <c-S-Right> :SidewaysRight<cr>
 
+" Hide comments and leave the code
+command HideComments hi! link Comment Ignore
+command ShowComments hi! link Comment Comment
+
 " ------------------------------
 " CamelCaseMotion settings:
 " CamelCaseMotion settings care about the snake_case. The alternative is `set iskeyword-=_` but it breaks the colorscheme :(
