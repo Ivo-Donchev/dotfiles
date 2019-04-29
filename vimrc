@@ -168,22 +168,8 @@ set clipboard=unnamed
 let g:system_copy#copy_command='xclip -sel clipboard'
 
 
-" Python settings
-
-let g:syntastic_python_checkers = ['flake8']
-
 " Navigation in current dir shortcut
 map ,hh :e <C-R>=expand("%:p:h") . "/" <CR>
-
-
-
-" React/JSX settings
-" ESLINT settings
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'node_modules/eslint/bin/eslint.js'
-
-" Ruby settings
-let g:syntastic_ruby_checkers = ['rubocop']
 
 execute pathogen#infect()
 
@@ -298,6 +284,14 @@ map <S-Up> <C-Y>
 " Do NOT break the line on 80th symbol caused by vim-scripts/indentpython.vim
 set tw=0
 
+" ALE settings
+" In ~/.vim/vimrc, or somewhere similar.
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\}
+let g:ale_fix_on_save = 1
+
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
@@ -307,7 +301,6 @@ Plugin 'leshill/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'indenthtml.vim'
 Plugin 'tpope/vim-markdown'
-Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-repeat'
@@ -342,6 +335,15 @@ Plugin 'vim-scripts/indentpython.vim'  " Proper python indentation (new line in 
 Plugin 'tpope/vim-abolish'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'AndrewRadev/sideways.vim'
+Plugin 'w0rp/ale'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+
+
+
+" Deoplete settings
+let g:deoplete#enable_at_startup = 1
 
 " ------------------------------
 " Splitjoin configuration
