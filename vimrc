@@ -197,8 +197,8 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
-let g:prettier#config#bracket_spacing = 'false' 
-let g:prettier#config#jsx_bracket_same_line = 'true' 
+let g:prettier#config#bracket_spacing = 'false'
+let g:prettier#config#jsx_bracket_same_line = 'true'
 " Disable prettier on save temporary
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
@@ -221,7 +221,7 @@ fun! s:get_visual_selection()
      let [line2,col2] = getpos("'>")[1:2]
      return l[col1 - 1: col2 - 1]
 endfun
-nnoremap <C-F> :CtrlSF 
+noremap <C-F> :CtrlSF 
 vnoremap <C-F> <Esc>:CtrlSF <C-R><C-R>=<SID>get_visual_selection()<CR>
 
 set nolinebreak
@@ -287,10 +287,11 @@ set tw=0
 " ALE settings
 " In ~/.vim/vimrc, or somewhere similar.
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier', 'eslint'],
 \}
 let g:ale_fix_on_save = 1
+" let g:ale_completion_enabled = 1
+
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
@@ -332,18 +333,10 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'mbbill/undotree'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'vim-scripts/indentpython.vim'  " Proper python indentation (new line in dict, for example)
-Plugin 'tpope/vim-abolish'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'w0rp/ale'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
-
-
-
-" Deoplete settings
-let g:deoplete#enable_at_startup = 1
+Plugin 'tpope/vim-abolish'
 
 " ------------------------------
 " Splitjoin configuration
@@ -363,8 +356,6 @@ command ShowComments hi! link Comment Comment
 " ------------------------------
 " CamelCaseMotion settings:
 " CamelCaseMotion settings care about the snake_case. The alternative is `set iskeyword-=_` but it breaks the colorscheme :(
-" set it explicitly
-set iskeyword+=_
 call camelcasemotion#CreateMotionMappings('<leader>')
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
@@ -374,3 +365,8 @@ sunmap w
 sunmap b
 sunmap e
 " ------------------------------
+"
+" set it explicitly
+set iskeyword+=_
+
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
