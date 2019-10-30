@@ -1,23 +1,62 @@
 # Django
-snippet dall "SomeModel.objects.all()" b
-${1:Model}.objects.all()
-endsnippet
-
-snippet dget "SomeModel.objects.get()" b
-${1:Model}.objects.get(${2})
-endsnippet
-
-snippet dffirst "SomeModel.objects.filter(...).first()" b
-${1:Model}.objects.filter(${2}).first()
-endsnippet
-
-snippet service
+snippet defat
 @transaction.atomic
 def ${1:fname}(*, $2):
 	$0
 endsnippet
 
+snippet schar "Serializer CharField" b
+$1 = serializers.CharField($2)
+endsnippet
+
+snippet sint "Serializer IntegerField" b
+$1 = serializers.IntegerField($2)
+endsnippet
+
+snippet sdate "Serializer DateField" b
+$1 = serializers.DateField($2)
+endsnippet
+
+snippet sdatetime "Serializer DateField" b
+$1 = serializers.DateTimeField($2)
+endsnippet
+
+snippet spk "Serializer PrimaryKeyRelatedField" b
+$1 = serializers.PrimaryKeyRelatedField(
+	queryset=${2:SomeModel}.objects.all()
+)
+endsnippet
+
 # Python
+
+snippet def
+def ${1:fname}(*, $2):
+	$0
+endsnippet
+
+snippet api
+class $1Api($2APIView):
+endsnippet
+
+snippet get
+def get(self, request$1):
+	$2
+	return Response()
+endsnippet
+
+snippet post
+def post(self, request$1):
+	$2
+	return Response()
+endsnippet
+
+snippet pdb
+import pdb; pdb.set_trace()
+endsnippet
+
+snippet ipdb
+import ipdb; ipdb.set_trace()
+endsnippet
 
 snippet for "for loop" b
 for ${1:item} in ${2:iterable}:
@@ -49,11 +88,6 @@ snippet roprop "Read Only Property" b
 @property
 def ${1:name}(self):
 	${2:return self._$1}$0
-endsnippet
-
-snippet def
-def ${1:fname}(`!p snip.rv = vim.eval('indent(".") ? "self" : ""')`$2):
-	$0
 endsnippet
 
 # Assertions

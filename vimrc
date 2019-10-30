@@ -115,6 +115,8 @@ set splitright
 map <silent> <C-n> :NERDTreeToggle<CR>
 
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+" let NERDTreeShowHidden=1
+
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -261,7 +263,7 @@ nnoremap <C-k> :m .-2<CR>==
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-noremap <leader>D :call ReactGotoDef()<CR>
+autocmd FileType javascript noremap <leader>d :call ReactGotoDef()<CR>
 
 " Easymotion
 map  <Leader>f <Plug>(easymotion-bd-f)
@@ -306,6 +308,7 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb' " Github handler for GBrowse (tpope/vim-fugitive)
 Plugin 'tpope/vim-surround'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'nvie/vim-flake8'
@@ -337,6 +340,8 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-abolish'
+Plugin 'unblevable/quick-scope'
+
 
 " ------------------------------
 " Splitjoin configuration
@@ -349,9 +354,8 @@ nnoremap <c-Right> :SidewaysJumpRight<cr>
 nnoremap <c-S-Left> :SidewaysLeft<cr>
 nnoremap <c-S-Right> :SidewaysRight<cr>
 
-" Hide comments and leave the code
-command HideComments hi! link Comment Ignore
-command ShowComments hi! link Comment Comment
+command Transparent hi! Normal guibg=NONE ctermbg=NONE
+hi! Normal guibg=NONE ctermbg=NONE " To make background transparent
 
 " ------------------------------
 " CamelCaseMotion settings:
@@ -370,3 +374,50 @@ sunmap e
 set iskeyword+=_
 
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
+
+" quick-scope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" DistractFree
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set nonumber
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set number
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+
+nnoremap <F6> :call ToggleHiddenAll()<CR>
+
+" Hide comments and leave the code
+command HideComments hi! link Comment Ignore
+command ShowComments hi! link Comment Comment
+
+let s:hidden_comments = 0
+function! ToggleComments()
+    if s:hidden_comments  == 0
+        let s:hidden_comments = 1
+        hi! link Comment Ignore
+    else
+        let s:hidden_comments = 0
+        hi! link Comment Comment
+    endif
+endfunction
+
+nnoremap <F8> :call ToggleComments()<CR>
+
+com! FormatJSON %!python -m json.tool
+
+nnoremap <F9> :call PythonDomainKnowledgeFillImport()<CR>
