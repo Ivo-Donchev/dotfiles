@@ -1,6 +1,8 @@
 " My custom material theme + settings
 " color dracula
-color gruvbox
+ color gruvbox
+
+
 
 set number
 syntax on
@@ -71,7 +73,6 @@ set t_vb=
 set mouse=a
 
 " Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
 set cmdheight=2
 
 " Display line numbers on the left
@@ -287,20 +288,20 @@ map <S-Up> <C-Y>
 set tw=0
 
 " ALE settings
-" In ~/.vim/vimrc, or somewhere similar.
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \}
 let g:ale_fix_on_save = 1
+" Skip showing errors when cursor on the line (but fixes dissapearing cursor
+" ale bug
+let g:ale_echo_cursor = 0
 " let g:ale_completion_enabled = 1
-
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
-Plugin 'leshill/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'indenthtml.vim'
 Plugin 'tpope/vim-markdown'
@@ -338,10 +339,24 @@ Plugin 'bkad/CamelCaseMotion'
 Plugin 'vim-scripts/indentpython.vim'  " Proper python indentation (new line in dict, for example)
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'AndrewRadev/sideways.vim'
-Plugin 'w0rp/ale'
 Plugin 'tpope/vim-abolish'
 Plugin 'unblevable/quick-scope'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'HackSoftware/vim-python-domain-knowledge'
+Plugin 'dense-analysis/ale'
+Plugin 'tpope/vim-sensible'
+Plugin 'wellle/targets.vim'
+Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'Yggdroot/indentLine'
 
+
+" Visible indent
+let g:indentLine_enabled = 0 " Disabled by default
+:nnoremap <Leader>i :IndentLinesToggle<cr>
+
+" Semantic highlighting
+:nnoremap <Leader>t :SemanticHighlightToggle<cr>
+let g:semanticTermColors = [28,4,5,6,7,25,9,10,34,12,13,14,15,16,19,10,25,26]
 
 " ------------------------------
 " Splitjoin configuration
@@ -421,3 +436,15 @@ nnoremap <F8> :call ToggleComments()<CR>
 com! FormatJSON %!python -m json.tool
 
 nnoremap <F9> :call PythonDomainKnowledgeFillImport()<CR>
+noremap <C-m> :call PythonDomainKnowledgeSearch()<Cr>
+
+
+autocmd FileType python set cursorline!
+"
+" Light theme alternative
+" color mac_classic
+
+function! LogFilter(word)
+    exe 'v/\v('.a:word.')/d'
+    echo 'Filtering lines that contains '.a:word
+endfunction
