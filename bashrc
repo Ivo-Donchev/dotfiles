@@ -127,13 +127,9 @@ TERM="xterm-256color"
 ## Git related
 alias gm='git commit'
 alias gs='git status'
+alias ga='git add .'
 alias gap='git add -p'
-alias gco='git checkout'
 alias gup='git pull origin $(git rev-parse --abbrev-ref HEAD)'
-
-## Yarn related
-alias yas='yarn start'
-alias yat='yarn test'
 
 ## Django related
 alias pmr='python manage.py runserver'
@@ -142,4 +138,3 @@ alias pmm='python manage.py migrate'
 alias pmmm='python manage.py makemigrations'
 alias pms='python manage.py shell'
 alias pmsp='python manage.py shell_plus'
-alias killpmr='pkill -f "manage.py runserver"'
