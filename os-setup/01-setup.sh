@@ -32,6 +32,9 @@ sudo apt-get install -y guake
 # F2 key binding - A place for the editor - vim
 sudo apt-get install -y tilda
 
+
+sudo apt install -y redis
+
 # AWS
 sudo apt-get install -y awscli
 
