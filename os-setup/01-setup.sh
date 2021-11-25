@@ -8,6 +8,8 @@ sudo apt-get install -y hub
 sudo apt-get install -y bat
 sudo apt-get install -y tldr
 sudo apt-get install -y curl
+sudo apt-get install -y silversearcher-ag
+
 
 # Zsh and Oh-My_Zsh
 sudo apt-get install -y zsh
