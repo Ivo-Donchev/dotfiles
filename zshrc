@@ -92,6 +92,7 @@ alias picticular-be='pyenv activate picticular-3.7.1 && cd /home/ivo/Code/Pictic
 alias hacksoft='cd ~/HackSoft'
 
 alias explorer='nautilus --browser'
+alias g='hub';
 
 # Pyenv settings
 export PYENV_ROOT="$HOME/.pyenv"
