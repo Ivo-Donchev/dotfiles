@@ -174,6 +174,11 @@ let g:system_copy#copy_command='xclip -sel clipboard'
 " Navigation in current dir shortcut
 map ,hh :e <C-R>=expand("%:p:h") . "/" <CR>
 
+" Angular mappings
+map ,t :e <C-R>=expand("%:r") . ".html" <CR><CR>
+map ,j :e <C-R>=expand("%:r") . ".ts" <CR><CR>
+map ,c :e <C-R>=expand("%:r") . ".scss" <CR><CR>
+
 execute pathogen#infect()
 
 " Vundle "
@@ -203,7 +208,7 @@ let g:prettier#config#tab_width = 2
 let g:prettier#config#bracket_spacing = 'false'
 let g:prettier#config#jsx_bracket_same_line = 'true'
 " Disable prettier on save temporary
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 " CtrlP Funky settings
 nnoremap <C-f> :CtrlPFunky<Cr>
