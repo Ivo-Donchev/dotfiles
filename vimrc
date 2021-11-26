@@ -179,6 +179,8 @@ map ,t :e <C-R>=expand("%:r") . ".html" <CR><CR>
 map ,j :e <C-R>=expand("%:r") . ".ts" <CR><CR>
 map ,c :e <C-R>=expand("%:r") . ".scss" <CR><CR>
 
+nmap <silent> gd <Plug>(coc-definition)
+
 execute pathogen#infect()
 
 " Vundle "
@@ -353,7 +355,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'wellle/targets.vim'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'Yggdroot/indentLine'
-
+Plugin 'neoclide/coc.nvim'
 
 " Visible indent
 let g:indentLine_enabled = 0 " Disabled by default
