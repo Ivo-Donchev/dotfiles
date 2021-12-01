@@ -297,12 +297,11 @@ set tw=0
 " ALE settings
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
+\   'python': ['flake8', 'mypy'],
 \}
 let g:ale_fix_on_save = 1
-" Skip showing errors when cursor on the line (but fixes dissapearing cursor
-" ale bug
-let g:ale_echo_cursor = 0
-" let g:ale_completion_enabled = 1
+let g:ale_echo_cursor = 1
+let g:ale_completion_enabled = 1
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
