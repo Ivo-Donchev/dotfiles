@@ -7,6 +7,7 @@ sudo apt-get install -y hub
 
 sudo apt-get install -y bat
 sudo apt-get install -y tldr
+sudo apt-get install -y htop
 sudo apt-get install -y curl
 sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y openvpn

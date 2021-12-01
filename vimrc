@@ -210,7 +210,7 @@ let g:prettier#config#tab_width = 2
 let g:prettier#config#bracket_spacing = 'false'
 let g:prettier#config#jsx_bracket_same_line = 'true'
 " Disable prettier on save temporary
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.html PrettierAsync
 
 " CtrlP Funky settings
 nnoremap <C-f> :CtrlPFunky<Cr>
