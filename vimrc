@@ -296,7 +296,7 @@ set tw=0
 
 " ALE settings
 let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint'],
+\   'javascript': ['prettier'],
 \   'python': ['flake8', 'mypy'],
 \}
 let g:ale_fix_on_save = 1
