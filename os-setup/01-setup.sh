@@ -13,17 +13,6 @@ sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y openvpn
 sudo apt install -y xclip
 
-# Zsh and Oh-My_Zsh
-sudo apt-get install -y zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Spaceshipt zshell theme
-git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1 &&
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-
-# FZF
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-
 # Set shell configuration
 cp ../zshrc ~/.zshrc
 cp ../bashrc ~/.bashrc
@@ -67,6 +56,17 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 # Postgres
 sudo apt install -y postgresql postgresql-contrib
+
+# Zsh and Oh-My_Zsh
+sudo apt-get install -y zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Spaceshipt zshell theme
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1 &&
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+# FZF
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 
 # Clean ubused modules
 sudo apt autoremove
