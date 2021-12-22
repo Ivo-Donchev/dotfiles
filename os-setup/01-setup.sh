@@ -5,7 +5,9 @@ sudo apt-get -y update
 sudo apt-get install -y git
 sudo apt-get install -y hub
 
-sudo apt-get install -y bat
+sudo apt-get install -y bat  # Prettier `cat`
+sudo ln -s /usr/bin/batcat /usr/bin/bat  # To make bat alias
+
 sudo apt-get install -y tldr
 sudo apt-get install -y htop
 sudo apt-get install -y curl
