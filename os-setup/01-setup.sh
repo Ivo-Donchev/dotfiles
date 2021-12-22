@@ -14,6 +14,7 @@ sudo apt-get install -y curl
 sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y openvpn
 sudo apt install -y xclip
+sudo apt install -y lm-sensors
 
 # Nvm
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
