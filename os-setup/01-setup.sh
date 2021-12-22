@@ -15,6 +15,12 @@ sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y openvpn
 sudo apt install -y xclip
 
+# Nvm
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+nvm install 16.13.1
+npm install -g npm@8.3.0
+npm install -g yarn
+
 # Set shell configuration
 cp ../zshrc ~/.zshrc
 cp ../bashrc ~/.bashrc
