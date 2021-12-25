@@ -16,6 +16,9 @@ sudo apt-get install -y openvpn
 sudo apt install -y xclip
 sudo apt install -y lm-sensors
 
+# 3d printing
+sudo snap install cura-slicer
+
 # Nvm
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 nvm install 16.13.1
