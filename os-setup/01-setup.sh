@@ -13,8 +13,9 @@ sudo apt-get install -y htop
 sudo apt-get install -y curl
 sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y openvpn
-sudo apt install -y xclip
-sudo apt install -y lm-sensors
+sudo apt install -y xclip  # "copy to clipboard" for vim
+sudo apt install -y lm-sensors  # Follow CPU temperature
+sudo apt install -y flameshot  # Better way of getting screenshots
 
 # 3d printing
 sudo snap install cura-slicer
