@@ -28,8 +28,8 @@ npm install -g npm@8.3.0
 npm install -g yarn
 
 # Set shell configuration
-cp ../zshrc ~/.zshrc
-cp ../bashrc ~/.bashrc
+cp ../shell-configuration/zshrc ~/.zshrc
+cp ../shell-configuration/bashrc ~/.bashrc
 
 # F1 key binding - A place to run all servers and scripts
 sudo apt-get install -y guake
