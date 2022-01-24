@@ -9,6 +9,7 @@ sudo apt-get install -y bat  # Prettier `cat`
 sudo ln -s /usr/bin/batcat /usr/bin/bat  # To make bat alias
 
 sudo apt-get install -y tldr
+sudo apt-get install -y httpie
 sudo apt-get install -y htop
 sudo apt-get install -y curl
 sudo apt-get install -y silversearcher-ag
