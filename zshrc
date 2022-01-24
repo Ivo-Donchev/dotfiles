@@ -45,7 +45,7 @@ alias py="python3"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 ## Django related
-alias pmr='python manage.py runserver'
+alias pmr='python3 manage.py runserver'
 alias pmt='python manage.py test'
 alias pmm='python manage.py migrate'
 alias pmmm='python manage.py makemigrations'
@@ -59,7 +59,7 @@ alias goto-colab-fe='cd ~/Code/colab-frontend/'
 
 alias goto-playground='pyenv activate playground && cd ~/Code/playground'
 
-alias ferntech-be='pyenv activate ferntech-3.7.9 && cd ~/Code/ferntech/if_portal_django_2'
+alias ferntech-be='pyenv activate ferntech-3.10.1 && cd ~/Code/ferntech/if_portal_django_2'
 alias ferntech-fe='cd ~/Code/ferntech/if_portal_angular'
 alias ferntech-infrastructure='cd ~/Code/ferntech/infrastructure_as_code'
 alias ferntech-controllers='cd ~/Code/ferntech/if_controller_2 && source ~/Code/virtual-environments/ferntech-controllers/bin/activate'
@@ -93,6 +93,9 @@ alias hacksoft='cd ~/HackSoft'
 
 alias explorer='nautilus --browser'
 alias g='hub';
+alias dbshell='sudo su postgres -c "psql"'
+alias ferntech-dbshell='pgcli infinitefingers'
+
 
 # Pyenv settings
 export PYENV_ROOT="$HOME/.pyenv"
@@ -132,3 +135,4 @@ SPACESHIP_GIT_STATUS_SHOW="false"
 
 export ANDROID_HOME=/opt/android
 
+eval "$(jump shell)"
