@@ -210,7 +210,7 @@ let g:prettier#config#tab_width = 2
 let g:prettier#config#bracket_spacing = 'false'
 let g:prettier#config#jsx_bracket_same_line = 'true'
 " Disable prettier on save temporary
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.html PrettierAsync
 
 " CtrlP Funky settings
 nnoremap <C-f> :CtrlPFunky<Cr>
@@ -439,7 +439,12 @@ endfunction
 
 nnoremap <F8> :call ToggleComments()<CR>
 
-com! FormatJSON %!python -m json.tool
+" A quick util to autoformat python-like dictionary or list to json
+com! FormatJSON %s/'/"/ge
+      \ | %s/True/true/ge
+      \ | %s/False/false/ge
+      \ | %s/None/null/ge
+      \ | %!python -m json.tool
 
 nnoremap <F9> :call PythonDomainKnowledgeFillImport()<CR>
 noremap <C-m> :call PythonDomainKnowledgeSearch()<Cr>
