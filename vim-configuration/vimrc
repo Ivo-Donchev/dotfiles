@@ -172,8 +172,7 @@ let g:system_copy#copy_command='xclip -sel clipboard'
 
 
 " Navigation in current dir shortcut
-map ,hh :e <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <C-h> :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <C-i> :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Angular mappings
 map ,t :e <C-R>=expand("%:r") . ".html" <CR><CR>
