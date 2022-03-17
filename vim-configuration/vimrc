@@ -91,6 +91,7 @@ set expandtab
 set autoindent
 set fileformat=unix
 
+
 "------------------------------------------------------------
 " Mappings
 "
@@ -451,6 +452,8 @@ noremap <C-m> :call PythonDomainKnowledgeSearch()<Cr>
 
 
 autocmd FileType python set cursorline!
+autocmd FileType python syntax match pythonFunction /\v[[:alpha:]_.]+\ze(\s?\()/
+autocmd FileType python hi def link pythonFunction Function
 "
 " Light theme alternative
 " color mac_classic
