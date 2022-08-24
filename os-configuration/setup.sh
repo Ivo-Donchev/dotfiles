@@ -18,6 +18,9 @@ sudo apt install -y xclip  # "copy to clipboard" for vim
 sudo apt install -y lm-sensors  # Follow CPU temperature
 sudo apt install -y flameshot  # Better way of getting screenshots
 
+sudo apt install -y ruby-full  # Required for https://github.com/athityakumar/colorls
+gem install colorls  # https://github.com/athityakumar/colorls
+
 # 3d printing
 sudo snap install cura-slicer
 
