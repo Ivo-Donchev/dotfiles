@@ -17,7 +17,7 @@ output_new_prs() {
         cut -d" " -f1 |
         while read PR
         do
-            echo "$GITHUB_URL/pull/$PR/ | $(hub pr show -f "%t | Merged: %mr" $PR)"
+            echo "$GITHUB_URL/pull/$PR/"
         done; 
     echo '---------------------------------------------------------------'
 }
