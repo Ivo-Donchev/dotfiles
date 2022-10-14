@@ -14,7 +14,7 @@ sudo apt-get install -y htop
 sudo apt-get install -y curl
 sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y openvpn
-sudo apt-get install -y peco
+sudo apt-get install -y peco  # Useful for filtering long commands output
 sudo apt install -y xclip  # "copy to clipboard" for vim
 sudo apt install -y lm-sensors  # Follow CPU temperature
 sudo apt install -y flameshot  # Better way of getting screenshots
