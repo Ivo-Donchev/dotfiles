@@ -13,6 +13,7 @@ sudo apt-get install -y httpie
 sudo apt-get install -y htop
 sudo apt-get install -y curl
 sudo apt-get install -y silversearcher-ag
+sudo apt-get install ripgrep
 sudo apt-get install -y openvpn
 sudo apt-get install -y peco  # Useful for filtering long commands output
 sudo apt install -y xclip  # "copy to clipboard" for vim
