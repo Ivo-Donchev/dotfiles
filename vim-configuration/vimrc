@@ -155,14 +155,6 @@ set foldlevel=99
 
 nnoremap <space> za
 
-" ctrl-p settings
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|node_modules|bower_components|build|dist|__pycache__)$',
-  \ 'file': '\v\.(celerybeat-schedule|jpeg|png)$'
-  \ }
-
-
 " Region expand settings
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -213,11 +205,6 @@ let g:prettier#config#jsx_bracket_same_line = 'true'
 " Disable prettier on save temporary
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.html PrettierAsync
 
-" CtrlP Funky settings
-nnoremap <C-f> :CtrlPFunky<Cr>
-let g:ctrlp_funky_matchtype = 'path'
-let g:ctrlp_funky_syntax_highlight = 1
-"
 " For vim-devicons
 set encoding=utf8
 
@@ -307,7 +294,6 @@ let g:ale_completion_enabled = 1
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'pangloss/vim-javascript'
 Plugin 'indenthtml.vim'
@@ -326,17 +312,14 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
 Plugin 'godlygeek/csapprox'
-Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'prettier/vim-prettier'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'miyakogi/conoline.vim'
 Plugin 'chemzqm/vim-jsx-improve'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'dyng/ctrlsf.vim'
-Plugin 'hdima/python-syntax'
 Plugin 'epilande/vim-es2015-snippets'
 Plugin 'SirVer/ultisnips'
-Plugin 'epilande/vim-react-snippets'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'Ivo-Donchev/vim-react-goto-definition'
 Plugin 'junegunn/goyo.vim'
@@ -356,6 +339,9 @@ Plugin 'wellle/targets.vim'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'neoclide/coc.nvim'
+Plugin 'vim-python/python-syntax'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " Visible indent
 let g:indentLine_enabled = 0 " Disabled by default
@@ -452,8 +438,6 @@ noremap <C-m> :call PythonDomainKnowledgeSearch()<Cr>
 
 
 autocmd FileType python set cursorline!
-autocmd FileType python syntax match pythonFunction /\v[[:alpha:]_.]+\ze(\s?\()/
-autocmd FileType python hi def link pythonFunction Function
 "
 " Light theme alternative
 " color mac_classic
@@ -462,3 +446,19 @@ function! LogFilter(word)
     exe 'v/\v('.a:word.')/d'
     echo 'Filtering lines that contains '.a:word
 endfunction
+
+function! DjangoSerializersMacros()
+  let @b = '0f:C: serializers.BooleanField(),'
+  let @s = '0f:C: serializers.CharField(),'
+  let @i = '0f:C: serializers.IntegerField(),'
+endfunction
+
+command SerializersMacros :call DjangoSerializersMacros()
+
+if exists("g:neovide")
+    let g:neovide_fullscreen=v:true
+    let g:python3_host_prog = '/home/ivo/Code/virtual-environemnts/ferntech-latest-3.10/bin/python'
+endif
+
+" fzf
+noremap <C-p> :Files <Cr>
