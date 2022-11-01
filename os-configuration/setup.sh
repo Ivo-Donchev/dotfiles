@@ -26,6 +26,13 @@ gem install colorls  # https://github.com/athityakumar/colorls
 # 3d printing
 sudo snap install cura-slicer
 
+# Jump
+sudo snap install jump
+
+# Node & npm
+sudo apt install nodejs
+sudo apt install npm
+
 # Nvm
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 nvm install 16.13.1
@@ -35,6 +42,9 @@ npm install -g yarn
 # Set shell configuration
 cp ../shell-configuration/zshrc ~/.zshrc
 cp ../shell-configuration/bashrc ~/.bashrc
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
 
 # F1 key binding - A place to run all servers and scripts
 sudo apt-get install -y guake
@@ -86,6 +96,10 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 
 # FZF
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+
+# Ruby
+sudo apt install ruby-full
+sudo gem install colorls
 
 # Clean ubused modules
 sudo apt autoremove
