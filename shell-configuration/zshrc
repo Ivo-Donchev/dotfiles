@@ -59,13 +59,16 @@ alias goto-colab-fe='cd ~/Code/colab-frontend/'
 
 alias goto-playground='pyenv activate playground && cd ~/Code/playground'
 
-alias ferntech-be='pyenv activate ferntech-3.10.1 && cd ~/Code/ferntech/if_portal_django_2'
+alias ferntech-be='source ~/Code/virtual-environemnts/ferntech-3.8/bin/activate && cd ~/Code/ferntech/if_portal_django_2'
 alias ferntech-fe='cd ~/Code/ferntech/if_portal_angular'
 alias ferntech-infrastructure='cd ~/Code/ferntech/infrastructure_as_code'
 alias ferntech-controllers='cd ~/Code/ferntech/if_controller_2 && source ~/Code/virtual-environments/ferntech-controllers/bin/activate'
 alias ferntech-if-server='cd ~/Code/ferntech/if_server && source ~/Code/virtual-environments/if-server/bin/activate'
 alias ferntech-metafiles='cd ~/Code/ferntech/metafiles'
 alias ferntech-logic-loops-sandbox='cd ~/Code/ferntech/logicloop_sandbox_server && source ~/Code/virtual-environments/ferntech-logic-loops/bin/activate'
+
+alias performance-testing-django='cd ~/Code/performance-testing/ && source ~/Code/virtual-environemnts/performance-testing/bin/activate'
+alias performance-testing-fastapi='cd ~/Code/performance-testing/ && source ~/Code/virtual-environemnts/performance-testing-fastapi/bin/activate'
 
 alias goto-kallanish='source ~/Code/virtual-environments/kallanish/bin/activate && cd ~/Code/kallanish/kallanish-backend'
 alias goto-kallanish-old='source ~/Code/virtual-environments/kallanish/bin/activate && cd ~/Code/kallanish/kallanish-old'
@@ -82,7 +85,7 @@ alias goto-django-playground='source ~/Code/virtual-environments/django-playgrou
 alias hack-course-2019='cd /home/ivo/Code/Programming-101-Python-2019'
 alias hack-course-2020='source ~/Code/virtual-environments/python-course-2020/bin/activate && cd ~/Code/Programming-101-Python-2020-Spring'
 
-alias django-meetup='source /home/ivo/Code/virtual-environments/django-meetup-05-2020/bin/activate && cd /home/ivo/Code/django-meetup-05-2020/meetup'
+alias django-meetup='source /home/ivo/Code/virtual-environemnts/django-meetup/bin/activate && cd /home/ivo/Code/Talks/Django.Meetup.Bulgaria-02-2023/demo/'
 
 alias django-source='cd /home/ivo/Code/django/django && vi'
 alias monitor-python='htop -p $(pgrep python | paste -s -d,)'
@@ -96,6 +99,7 @@ alias g='hub';
 alias dbshell='sudo su postgres -c "psql"'
 alias ferntech-dbshell='pgcli infinitefingers'
 
+alias keychron-fn-keys='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 
 # Pyenv settings
 export PYENV_ROOT="$HOME/.pyenv"
@@ -135,7 +139,7 @@ SPACESHIP_GIT_STATUS_SHOW="false"
 
 export ANDROID_HOME=/opt/android
 
-source $(dirname $(gem which colorls))/tab_complete.sh
-alias lc='colorls -lA --sd'
+source $(dirname $(gem which colorls))/tab_complete.sh  # https://github.com/athityakumar/colorls
+alias ls='colorls'
 
 eval "$(jump shell)"
