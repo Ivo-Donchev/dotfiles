@@ -1,13 +1,23 @@
 [user]
-	email = i.donchev@hacksoft.io
+	email = ivaylo.i.donchev@gmail.com
 	name = Ivo Donchev
 [core]
 	editor = vim
 	excludesfile = /home/ivodonchev/.gitignore
+    pager = delta
 [diff]
 	tool = vimdiff
 [push]
 	default = current
+[interactive]
+    diffFilter = delta --color-only
+[merge]
+    conflictstyle = zdiff3
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+    line-numbers = true
+    side-by-side = true
 [alias]
   s = status
   a = add -p
@@ -31,3 +41,11 @@
   pf = push --force-with-lease
   prs = pr list
   pro = pull-request -o
+[credential]
+	helper = store
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
